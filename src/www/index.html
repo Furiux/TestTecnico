@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- UIkit CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/uikit@3.6.16/dist/css/uikit.min.css"
+    />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.16/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.16/dist/js/uikit-icons.min.js"></script>
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css"
+    />
+
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+
+    <title>Test Movies</title>
+
+  </head>
+  <body>
+    <div class="uk-container">
+        <div class="uk-child-width-expand@s uk-text-center" uk-grid>
+            <div>
+            <h1 class="uk-heading-small uk-margin-top">Administration panel</h1>
+            </div>
+        </div>
+        <ul class="uk-subnav uk-subnav-pill uk-text-bold uk-text-center" uk-switcher="animation: uk-animation-slide-left-medium, uk-animation-slide-right-medium">
+            <li><a href="#">Movies List</a></li>
+            <li><a href="#">Classification List</a></li>
+        </ul>
+
+        <ul class="uk-switcher uk-margin">
+            <li> 
+                
+                <div class="uk-child-width-expand@s uk-text-center" uk-grid>
+                    <div>
+                        
+                        <h3>Movies List</h3>
+            
+                        <div id="modal-movie" class="uk-flex-top" uk-modal>
+                            <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+
+                                <button class="uk-modal-close-default" type="button" uk-close></button>
+
+                                <form class="uk-form-stacked">
+
+                                    <div class="uk-margin" hidden>
+                                        <label class="uk-form-label" for="form-stacked-text">ID</label>
+                                        <div class="uk-form-controls">
+                                            <input class="uk-input" id="idMovie" type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="uk-margin">
+                                        <label class="uk-form-label" for="form-stacked-text">Name</label>
+                                        <div class="uk-form-controls">
+                                            <input class="uk-input" id="nameMovie" type="text">
+                                        </div>
+                                    </div>
+                                
+                                    <div class="uk-margin">
+                                        <label class="uk-form-label" for="form-stacked-text">Director</label>
+                                        <div class="uk-form-controls">
+                                            <input class="uk-input" id="directorMovie" type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="uk-margin">
+                                        <label class="uk-form-label" for="form-stacked-select">Clasification</label>
+                                        <div class="uk-form-controls">
+                                            <select class="uk-select uk-form-width-large" id="clasificationMovie">
+
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="uk-margin">
+                                        <button class="uk-button uk-button-primary uk-float-right" id="saveMovie">Save</button>
+                                        <button class="uk-button uk-button-primary uk-float-right" id="modifyMovie">Modify</button>
+                                    </div>
+                                
+                                </form>
+
+                            </div>
+                        </div>
+
+                        <table class="display" style="width:100%" id="tableMovie">
+                            <thead>
+                                <tr>
+                                    <th class="uk-text-center">Name</th>
+                                    <th class="uk-text-center">Director</th>
+                                    <th class="uk-text-center">Clasification</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+            
+                    </div>
+                </div>
+
+            </li>
+            <li>
+
+                <div class="uk-child-width-expand@s uk-text-center" uk-grid>
+                    <div>
+                        <h3>Classification List</h3>
+
+                        <div id="modal-clasification" class="uk-flex-top" uk-modal>
+                            <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+
+                                <button class="uk-modal-close-default" type="button" uk-close></button>
+
+                                <form class="uk-form-stacked">
+
+                                    <div class="uk-margin" hidden>
+                                        <label class="uk-form-label" for="form-stacked-text">ID</label>
+                                        <div class="uk-form-controls">
+                                            <input class="uk-input" id="idClasification" type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="uk-margin">
+                                        <label class="uk-form-label" for="form-stacked-text">Name</label>
+                                        <div class="uk-form-controls">
+                                            <input class="uk-input" id="nameClasification" type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="uk-margin">
+                                        <button class="uk-button uk-button-primary uk-float-right" id="saveClasification">Save</button>
+                                        <button class="uk-button uk-button-primary uk-float-right" id="modifyClasification">Modify</button>
+                                    </div>
+                                
+                                </form>
+
+                            </div>
+                        </div>
+                        
+                        <table class="display" style="width:100%" id="tableClasificate">
+                            <thead>
+                                <tr>
+                                    <th class="uk-text-center">Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+            
+                    </div>
+                  </div>
+                </div>
+
+            </li>
+        </ul>
+      
+    
+
+    <script> 
+        $(document).ready(function () {
+
+            $.ajax({
+                url: "http://localhost:4000/api/movies",
+                method: 'get',
+                dataType: 'json',
+                success: function (data){
+                    var events = $('#events');
+                    var table = $('#tableMovie').DataTable({
+                        data: data,               
+                        columns: [
+                            {"data": "name" },
+                            {"data": "director" },
+                            {"data": "clasification.name" },
+                        ],
+                        dom: 'Bfrtip',
+                        select: true,
+                        buttons: [
+                            {
+                                text: 'Create',
+                                action: function () {
+
+                                    $('#idMovie').val("");
+                                    $('#nameMovie').val("");
+                                    $('#directorMovie').val("");
+
+                                    const requestClasificate = $.ajax({
+                                        url: "http://localhost:4000/api/clasification",
+                                        method: "GET"
+                                    });
+                                    
+                                    requestClasificate.done(function( data ) {
+                                
+                                        var selectdata = '';
+                                        
+                                        $.each(data, function (key, value) { 
+                                            selectdata += '<option id="' + value._id + '">' + value.name + '</option>'
+                                        }); 
+
+                                        $('#clasificationMovie').append(selectdata);
+
+                                    });
+                                    
+                                    requestClasificate.fail(function( error ) {
+                                        console.log( 'Error: ' , error );
+                                    });
+
+                                    $('#modifyMovie').hide();
+                                    $('#saveMovie').show();
+                                    UIkit.modal("#modal-movie").show();
+
+                                }
+                            },
+                            {
+                                text: 'Modify',
+                                action: function () {
+                                    
+                                    var idMovie = table.rows( { selected: true } ).data()[0]['_id'];
+                                    var nameMovie = table.rows( { selected: true } ).data()[0]['name'];
+                                    var directorMovie = table.rows( { selected: true } ).data()[0]['director'];
+
+                                    $('#idMovie').val(idMovie);
+                                    $('#nameMovie').val(nameMovie);
+                                    $('#directorMovie').val(directorMovie);
+
+                                    const requestClasificate = $.ajax({
+                                        url: "http://localhost:4000/api/clasification",
+                                        method: "GET"
+                                    });
+                                    
+                                    requestClasificate.done(function( data ) {
+                                
+                                        var selectdata = '';
+                                        
+                                        $.each(data, function (key, value) { 
+                                            selectdata += '<option id="' + value._id + '">' + value.name + '</option>'
+                                        }); 
+
+                                        $('#clasificationMovie').append(selectdata);
+
+                                    });
+                                    
+                                    requestClasificate.fail(function( error ) {
+                                        console.log( 'Error: ' , error );
+                                    });
+
+                                    $('#modifyMovie').show();
+                                    $('#saveMovie').hide();
+                                    UIkit.modal("#modal-movie").show();
+
+                                }
+                            },
+                            {
+                                text: 'Remove',
+                                action: function () {
+                                    var idMovie = table.rows( { selected: true } ).data()[0]['_id'];
+                                    const requestDeleteMovie = $.ajax({
+                                    url: "http://localhost:4000/api/remove-movie",
+                                    method: "DELETE",
+                                    data: "id="+idMovie,
+                                    });
+
+                                    requestDeleteMovie.done(function( data ) {
+                                        window.location.href = 'index.html';
+                                    });
+
+                                    requestDeleteMovie.fail(function( error ) {
+                                    console.log( 'Error: ' , error );
+                                    });
+                                    
+                                }
+                            }
+                        ]
+                    }); 
+                }
+            });
+
+            $.ajax({
+                url: "http://localhost:4000/api/clasification",
+                method: 'get',
+                dataType: 'json',
+                success: function (data){
+                    var events = $('#events');
+                    var table = $('#tableClasificate').DataTable({
+                        data: data,               
+                        columns: [
+                            {"data": "name" },
+                        ],
+                        dom: 'Bfrtip',
+                        select: true,
+                        buttons: [
+                            {
+                                text: 'Create',
+                                action: function () {
+
+                                    $('#idClasification').val("");
+                                    $('#nameClasification').val("");
+
+                                    $('#modifyClasification').hide();
+                                    $('#saveClasification').show();
+                                    UIkit.modal("#modal-clasification").show();
+
+                                }
+                            },
+                            {
+                                text: 'Modify',
+                                action: function () {
+                                    
+                                    var idClasification = table.rows( { selected: true } ).data()[0]['_id'];
+                                    var nameClasification = table.rows( { selected: true } ).data()[0]['name'];
+
+                                    $('#idClasification').val(idClasification);
+                                    $('#nameClasification').val(nameClasification);
+
+                                    $('#modifyClasification').show();
+                                    $('#saveClasification').hide();
+                                    UIkit.modal("#modal-clasification").show();
+
+                                }
+                            },
+                            {
+                                text: 'Remove',
+                                action: function () {
+                                    var idClasification = table.rows( { selected: true } ).data()[0]['_id'];
+                                    const requestDeleteClasification = $.ajax({
+                                    url: "http://localhost:4000/api/remove-clasification",
+                                    method: "DELETE",
+                                    data: "id="+idClasification,
+                                    });
+
+                                    requestDeleteClasification.done(function( data ) {
+                                        window.location.href = 'index.html';
+                                    });
+
+                                    requestDeleteClasification.fail(function( error ) {
+                                    console.log( 'Error: ' , error );
+                                    });
+                                    
+                                }
+                            }
+                        ]
+                    }); 
+                }
+            });
+
+        });
+
+        // Request POST
+        $("#saveMovie").click(function(){
+
+            nameMovie=$("#nameMovie").val();
+            directorMovie=$("#directorMovie").val();
+            clasificationMovie=$('#clasificationMovie').children(":selected").attr("id");
+
+            const requestCreateMovie = $.ajax({
+                url: "http://localhost:4000/api/new-movie",
+                method: "POST",
+                data: "name="+nameMovie+"&director="+directorMovie+"&clasification="+clasificationMovie,
+            });
+
+            requestCreateMovie.done(function( data ) {
+                window.location.href = 'index.html';
+            });
+
+            requestCreateMovie.fail(function( error ) {
+                console.log( 'Error: ' , error );
+            });
+        
+        });
+
+        $("#saveClasification").click(function(){
+
+            nameClasification=$("#nameClasification").val();
+
+            const requestCreateMovie = $.ajax({
+                url: "http://localhost:4000/api/new-clasification",
+                method: "POST",
+                data: "name="+nameClasification,
+            });
+
+            requestCreateMovie.done(function( data ) {
+                window.location.href = 'index.html';
+            });
+
+            requestCreateMovie.fail(function( error ) {
+                console.log( 'Error: ' , error );
+            });
+
+        });
+
+        // Request POST
+        $("#modifyMovie").click(function(){
+
+            idMovie=$("#idMovie").val();
+            nameMovie=$("#nameMovie").val();
+            directorMovie=$("#directorMovie").val();
+            clasificationMovie=$('#clasificationMovie').children(":selected").attr("id");
+
+            const requestCreateMovie = $.ajax({
+                url: "http://localhost:4000/api/modify-movies",
+                method: "PATCH",
+                data: "name="+nameMovie+"&director="+directorMovie+"&clasification="+clasificationMovie+"&id="+idMovie,
+            });
+
+            requestCreateMovie.done(function( data ) {
+                window.location.href = 'index.html';
+            });
+
+            requestCreateMovie.fail(function( error ) {
+                console.log( 'Error: ' , error );
+            });
+
+        });
+
+        $("#modifyClasification").click(function(){
+
+            idClasification=$("#idClasification").val();
+            nameClasification=$("#nameClasification").val();
+
+            const requestCreateMovie = $.ajax({
+                url: "http://localhost:4000/api/modify-clasification",
+                method: "PATCH",
+                data: "name="+nameClasification+"&id="+idClasification,
+            });
+
+            requestCreateMovie.done(function( data ) {
+                window.location.href = 'index.html';
+            });
+
+            requestCreateMovie.fail(function( error ) {
+                console.log( 'Error: ' , error );
+            });
+
+        });
+
+    </script> 
+
+  </body>
+</html>

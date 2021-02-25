@@ -1,0 +1,31 @@
+{
+  "name": "test-backend",
+  "version": "1.0.0",
+  "description": "Prueba tecnica desarollo backend",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src",
+    "start": "node src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Isruptiva/TestTecnico.git"
+  },
+  "author": "Ezequiel A Nuñez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Isruptiva/TestTecnico/issues"
+  },
+  "homepage": "https://github.com/Isruptiva/TestTecnico#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.18",
+    "morgan": "^1.10.0",
+    "underscore": "^1.12.0"
+  }
+}
